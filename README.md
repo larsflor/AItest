@@ -1,19 +1,44 @@
-# 🎈 Blank app template
 
-A simple Streamlit app template for you to modify!
+# AI-agent demo för säkerhetsföretag (enkel SOC-assistent)
 
-[![Open in Streamlit](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://blank-app-template.streamlit.app/)
+Ett superenkelt demo byggt i Streamlit som visar tre användningsfall:
+1) Incidenttriage (sammanfatta incident, föreslå nästa steg)
+2) Phishing-analys (snabb riskbedömning + användarinfo)
+3) Policy/Playbook Q&A (agenten hittar svar i ett litet "kunskapsbibliotek")
 
-### How to run it on your own machine
+## Snabbstart
 
-1. Install the requirements
+1. Installera beroenden (Python 3.10+ rekommenderas):
+```
+pip install streamlit openai pandas
+```
+2. (Valfritt) Sätt din OpenAI-nyckel för "riktig" AI:
+- macOS/Linux:
+```
+export OPENAI_API_KEY="sk-..."
+```
+- Windows PowerShell:
+```
+setx OPENAI_API_KEY "sk-..."
+```
+3. Starta appen:
+```
+streamlit run app_streamlit.py
+```
 
-   ```
-   $ pip install -r requirements.txt
-   ```
+> **Ingen API-nyckel?** Inga problem – appen kör ett *simulerat läge* med mallade svar.
+> Det räcker för att demonstrera flödet och agentbeteendet.
 
-2. Run the app
+## Demo-idéer att visa upp
+- Klicka på en incident och be agenten **sammanfatta** och **föreslå åtgärdsplan**.
+- Låt agenten skapa ett **stakeholder-mail** (t.ex. till SOC Manager).
+- Visa hur agenten kan ta fram en **SIEM-fråga** eller ett kort **hunt-upplägg**.
+- Kör phishing-exemplet och visa **rekommenderade steg** enligt playbook.
+- Ställ en fri fråga i läget **Policy/Playbook Q&A** (t.ex. *”Vad gör vi vid admininloggningar nattetid?”*).
 
-   ```
-   $ streamlit run streamlit_app.py
-   ```
+## Filer
+- `app_streamlit.py` – huvudappen (svenskt UI)
+- `data/incidents.csv` – några påhittade incidenter
+- `kb.json` – enkel kunskapsbas med playbooks, queries och kontakter
+
+Lycka till!
