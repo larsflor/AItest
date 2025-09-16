@@ -1,0 +1,33 @@
+{
+  "playbooks": {
+    "edr_powershell": [
+      "Confirm parent process and command line.",
+      "Isolate endpoint if confirmed malicious.",
+      "Collect volatile artifacts (process list, network conns).",
+      "Search enterprise for similar behavior (IOCs).",
+      "Block indicators on EDR/SOAR and notify user."
+    ],
+    "phishing_attachment": [
+      "Quarantine the email and similar messages.",
+      "Detonate attachment in sandbox (if available).",
+      "Reset user credentials if any credential prompts clicked.",
+      "Hunt for recipients who engaged; guide password reset.",
+      "Update email security rules for lookalike domains."
+    ],
+    "after_hours_admin_login": [
+      "Verify if admin had planned maintenance.",
+      "Check geolocation and source IP reputation.",
+      "Review change records; monitor for lateral movement.",
+      "Enforce MFA and conditional access if gaps found.",
+      "Document exception or create incident if suspicious."
+    ]
+  },
+  "queries": {
+    "siem_failed_then_success": "index=auth sourcetype=windows:security user=svc_admin | transaction user maxspan=10m | where failed>=5 AND success=1",
+    "edr_child_process": "DeviceProcessEvents | where InitiatingProcessFileName in ('WINWORD.EXE','EXCEL.EXE') and FileName == 'powershell.exe'"
+  },
+  "contacts": {
+    "IR_on_call": "ir-oncall@example.com",
+    "SOC_manager": "soc.manager@example.com"
+  }
+}
