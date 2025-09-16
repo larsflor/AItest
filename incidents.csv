@@ -1,0 +1,4 @@
+id,source,severity,title,event_time,assets,notes
+INC-1001,EDR,High,Suspicious PowerShell spawned by Office,2025-09-05T08:14:22Z,"LAPTOP-23F, USER: alice",Child process: powershell.exe -enc <base64>; Network to 203.0.113.16:4444
+INC-1002,Email Security,Medium,Possible phishing: invoice attachment,2025-09-06T10:03:11Z,USER: bob,Sender: 'Accounts Payable'; Domain: inv0ice-co.com; Attachment: invoice.docm
+INC-1003,SIEM,Low,Admin login outside business hours,2025-09-07T02:19:44Z,"SERVER: WSUS01, USER: svc_admin",Failed logins: 5; Success at 02:19; Source IP: 198.51.100.77
